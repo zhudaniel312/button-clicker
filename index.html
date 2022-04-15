@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>Button Clicker</title>
+        
+        <style>
+            /*CSS below!*/
+            body {
+                background-color: rgb(36, 36, 36);
+                color: rgb(255, 242, 240);
+                font-size: 190%;
+                font-family: Georgia;
+                text-align: center;
+            }
+            #point-button{
+                width: 142px;
+                height: 50px;
+                color: black;
+                background-color: rgb(255, 228, 224);
+                border: solid 3px text;
+                font-family: Georgia;
+            }
+            #point-display{
+                font-size: 70%;
+                color: rgb(255, 242, 240);
+                text-align: left;
+                position: absolute;
+                top: 104px;
+            }
+            p {
+                font-size: 14px;
+                margin: 16px;
+                
+            }
+            #update-log{
+                font-size: 19px;
+                margin-top: 20px;
+                color: rgb(229, 255, 240);
+                border: solid 3px rgb(229, 255, 240);
+                width: 438px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 70px;
+                text-align: center;
+            }
+            #main-content{
+                border: solid 3px rgb(255, 242, 240);
+                margin-top: 100px;
+                width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <!--HTML below!-->
+    <body>
+
+        <div id="main-content">
+
+        <h1>Button Clicker</h1>
+        <p>(designed for computers)</p>
+        <!-- Click The Button To Get A Point-->
+        <button id="point-button">Click Me!</button>
+        
+        <div id="update-log"><br><br></div>
+        <div id="upgrade-log"></div>
+
+        </div>
+
+        <!-- objects with specified point -->
+        <div id="point-display"></div>
+
+    </body>
+    <!--JAVASCRIPT below! -->
+    <script>
+        //elements
+        var buttonEl = document.getElementById("point-button");
+        var displayEl = document.getElementById("point-display");
+        //update
+        var dLogEl = document.getElementById("update-log");
+        //upgrade
+        var gLogEl = document.getElementById("upgrade-log");
+        var thinkButton = document.getElementById("think-button");
+        
+        //values for game
+        var proggresion = 0;
+        var motivation = 0;
+        var thinkingPower = 0;
+        
+        /*
+        Click:
+        1. Adds a point
+        2. Displays point, must be inside to update
+        */
+        var onClickButton = function() {
+            proggresion = proggresion + 1;
+            motivation = motivation + 1;
+            
+            //update
+            if (proggresion >= 20) {
+                updateText("Oh yeah, this <strong>game</strong> isn't much, keep going. I'm gonna add some more code.");
+            }
+            
+            if (proggresion >= 40) {
+                updateText("Let's change the points first!");
+            }
+            
+            if (proggresion >= 60) {
+                dLogEl.innerHTML = "<br>Yay! That wasn't so hard."
+                changePoint();
+            } else {
+                displayEl.innerHTML = "<br>Points: <strong>" + motivation;
+            }
+            
+            if (proggresion >= 80) {
+                dLogEl.innerHTML = "<br>That's how you become rich, right?"
+                
+                //upgrade button recoded in HTML
+                createButton("Think: 25ms", "think-button");
+                
+                //element, note to self: try to optomise this
+                var thinkButton = document.getElementById("think-button");
+                
+                //style for new button
+                thinkButton.style.color = "black";
+                thinkButton.style.backgroundColor = "rgb(255, 228, 224)";
+                thinkButton.style.border = "solid 3px text";
+                thinkButton.style.fontFamily = "Georgia";
+            }
+            
+            if(motivation >= 25) {
+            thinkButton.addEventListener("click", onThinkButton);
+            }
+        }
+        //activates top ^
+        buttonEl.addEventListener("click", onClickButton);
+        
+        var changePoint = function() {
+            displayEl.innerHTML = "<br>Motivational Support: <strong>" + motivation;
+        }
+        
+        var createButton = function(name, id) {
+            gLogEl.innerHTML = "<button id=" + id + ">" + name + "</button>"
+
+        }
+        
+        var onThinkButton = function() {
+            motivation -= 25;
+            thinkingPower += 1;
+        }
+
+        var updateText = function(text) {
+            dLogEl.innerHTML = "<br>" + text;
+        }
+        
+    </script>
+</html>
