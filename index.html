@@ -9,50 +9,62 @@
             /*CSS below!*/
             body {
                 background-color: rgb(36, 36, 36);
-                color: rgb(255, 242, 240);
-                font-size: 190%;
-                font-family: Georgia;
-                text-align: center;
+                color:            rgb(255, 242, 240);
+                font-size:        190%;
+                font-family:      Georgia;
+                text-align:       center;
             }
+
             #point-button{
-                width: 142px;
-                height: 50px;
-                color: black;
+                width:            15%;
+                height:           50px;
+                color:            black;
                 background-color: rgb(255, 228, 224);
-                border: solid 3px text;
-                font-family: Georgia;
+                border:           solid 3px text;
+                font-family:      Georgia;
             }
+
             #point-display{
-                font-size: 70%;
-                color: rgb(255, 242, 240);
-                text-align: left;
-                position: absolute;
-                top: 104px;
+                font-size:        70%;
+                color:            rgb(255, 242, 240);
+                text-align:       left;
+                position:         absolute;
+                top:              104px;
             }
-            p {
-                font-size: 14px;
-                margin: 16px;
-                
+
+            #par{
+                font-size:        0.475em;
+                margin:           16px;
             }
+
+            p{
+                font-size:        0.9em;
+                margin-bottom:    10px;
+                margin-top:       10px;
+            }
+
             #update-log{
-                font-size: 19px;
-                margin-top: 20px;
-                color: rgb(229, 255, 240);
-                border: solid 3px rgb(229, 255, 240);
-                width: 438px;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 70px;
-                text-align: center;
+                font-size:        19px;
+                margin-top:       20px;
+                color:            rgb(229, 255, 240);
+                border:           solid 3px rgb(229, 255, 240);
+                width:            438px;
+                margin-left:      auto;
+                margin-right:     auto;
+                margin-bottom:    130px;
+                margin-top:       50px;
+                text-align:       center;
             }
+
             #main-content{
-                border: solid 3px rgb(255, 242, 240);
-                margin-top: 100px;
-                width: 700px;
-                margin-left: auto;
-                margin-right: auto;
+                border:           solid 3px rgb(255, 242, 240);
+                margin-top:       100px;
+                width:            700px;
+                margin-left:      auto;
+                margin-right:     auto;
             }
         </style>
+        
     </head>
     <!--HTML below!-->
     <body>
@@ -60,7 +72,8 @@
         <div id="main-content">
 
         <h1>Button Clicker</h1>
-        <p>(designed for computers)</p>
+        <p id="par">(designed for computers)</p>
+
         <!-- Click The Button To Get A Point-->
         <button id="point-button">Click Me!</button>
         
@@ -72,22 +85,24 @@
         <!-- objects with specified point -->
         <div id="point-display"></div>
 
-    </body>
-    <!--JAVASCRIPT below! -->
-    <script>
+            
+        
+        <script>
         //elements
-        var buttonEl = document.getElementById("point-button");
-        var displayEl = document.getElementById("point-display");
+        var buttonEl    = document.getElementById("point-button");
+        var displayEl   = document.getElementById("point-display");
         //update
-        var dLogEl = document.getElementById("update-log");
+        var dLogEl      = document.getElementById("update-log");
         //upgrade
-        var gLogEl = document.getElementById("upgrade-log");
+        var gLogEl      = document.getElementById("upgrade-log");
         var thinkButton = document.getElementById("think-button");
+
+        console.log(buttonEl);
         
         //values for game
-        var proggresion = 0;
-        var motivation = 0;
-        var thinkingPower = 0;
+        var proggresion      = 0;
+        var motivation       = 0;
+        var thinkingPower    = 0;
         
         /*
         Click:
@@ -95,8 +110,8 @@
         2. Displays point, must be inside to update
         */
         var onClickButton = function() {
-            proggresion = proggresion + 1;
-            motivation = motivation + 1;
+            proggresion      = proggresion + 1;
+            motivation       = motivation + 1;
             
             //update
             if (proggresion >= 20) {
@@ -108,52 +123,63 @@
             }
             
             if (proggresion >= 60) {
-                dLogEl.innerHTML = "<br>Yay! That wasn't so hard."
+                updateText("Yay! That wasn't so hard.");
                 changePoint();
             } else {
                 displayEl.innerHTML = "<br>Points: <strong>" + motivation;
             }
             
             if (proggresion >= 80) {
-                dLogEl.innerHTML = "<br>That's how you become rich, right?"
+                updateText("That's how you become rich, right?");
                 
                 //upgrade button recoded in HTML
                 createButton("Think: 25ms", "think-button");
                 
                 //element, note to self: try to optomise this
-                var thinkButton = document.getElementById("think-button");
+                thinkButton = document.getElementById("think-button");
                 
                 //style for new button
-                thinkButton.style.color = "black";
+                thinkButton.style.color =           "black";
                 thinkButton.style.backgroundColor = "rgb(255, 228, 224)";
-                thinkButton.style.border = "solid 3px text";
-                thinkButton.style.fontFamily = "Georgia";
+                thinkButton.style.border =          "solid 3px text";
+                thinkButton.style.fontFamily =      "Georgia";
+                thinkButton.style.marginBottom =    "60px";
+                thinkButton.style.width =           "95px";
+                thinkButton.style.height =          "27.5px";
             }
+
             
-            if(motivation >= 25) {
-            thinkButton.addEventListener("click", onThinkButton);
+            const forever = function() {
+                if(motivaiton >= 25) {
+                     
+                }
             }
+            thinkButton.addEventListener("click", onThinkButton);
+            
+            motivaiton = updateMotivaiton;
         }
-        //activates top ^
+
         buttonEl.addEventListener("click", onClickButton);
-        
+
         var changePoint = function() {
-            displayEl.innerHTML = "<br>Motivational Support: <strong>" + motivation;
+            displayEl.innerHTML = "<br>Motivation: <strong>" + motivation;
         }
-        
+
         var createButton = function(name, id) {
             gLogEl.innerHTML = "<button id=" + id + ">" + name + "</button>"
 
         }
         
         var onThinkButton = function() {
-            motivation -= 25;
-            thinkingPower += 1;
+                motivation -= 25;
+                thinkingPower += 1;
         }
 
         var updateText = function(text) {
-            dLogEl.innerHTML = "<br>" + text;
+            dLogEl.innerHTML = "<br> <p>" + text + "</p>";   
         }
-        
     </script>
+    </body>
+    <!--JAVASCRIPT below! -->
+    
 </html>
