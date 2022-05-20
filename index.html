@@ -81,6 +81,8 @@
         <div id="upgrade-log"></div>
 
         </div>
+        
+        <div id="think-button"></div>
 
         <!-- objects with specified point -->
         <div id="point-display"></div>
@@ -136,27 +138,26 @@
                 createButton("Think: 25 motivation", "think-button");
                 
                 //new element var
-                thinkButton = document.getElementById("think-button");
+                thinkButtonEl = document.getElementById("think-button");
                 
                 //style for new button
-                thinkButton.style.color =           "black";
-                thinkButton.style.backgroundColor = "rgb(255, 228, 224)";
-                thinkButton.style.border =          "solid 3px text";
-                thinkButton.style.fontFamily =      "Georgia";
-                thinkButton.style.marginBottom =    "60px";
-                thinkButton.style.width =           "95px";
-                thinkButton.style.height =          "27.5px";
+                thinkButtonEl.style.color =           "black";
+                thinkButtonEl.style.backgroundColor = "rgb(255, 228, 224)";
+                thinkButtonEl.style.border =          "solid 3px text";
+                thinkButtonEl.style.fontFamily =      "Georgia";
+                thinkButtonEl.style.marginBottom =    "60px";
+                thinkButtonEl.style.width =           "95px";
+                thinkButtonEl.style.height =          "27.5px";
             }
 
             
             var update = function() {
                 if(motivaiton >= 25) {
-                     thinkButton.addEventListener("click", onThinkButton);
+                     thinkButtonEl.addEventListener("click", onThinkButton);
                 }
             }
             
             
-            motivaiton = updateMotivaiton;
         }
 
         buttonEl.addEventListener("click", onClickButton);
