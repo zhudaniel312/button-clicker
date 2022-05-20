@@ -149,7 +149,7 @@
             }
 
             
-            const forever = function() {
+            var update = function() {
                 if(motivaiton >= 25) {
                      thinkButton.addEventListener("click", onThinkButton);
                 }
@@ -178,6 +178,8 @@
         var updateText = function(text) {
             dLogEl.innerHTML = "<br> <p>" + text + "</p>";   
         }
+        
+        setInterval.addEventListener(10, update);
     </script>
     </body>
     <!--JAVASCRIPT below! -->
