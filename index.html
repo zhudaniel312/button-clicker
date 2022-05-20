@@ -133,9 +133,9 @@
                 updateText("That's how you become rich, right?");
                 
                 //upgrade button recoded in HTML
-                createButton("Think: 25ms", "think-button");
+                createButton("Think: 25 motivation", "think-button");
                 
-                //element, note to self: try to optomise this
+                //new element var
                 thinkButton = document.getElementById("think-button");
                 
                 //style for new button
@@ -151,10 +151,10 @@
             
             const forever = function() {
                 if(motivaiton >= 25) {
-                     
+                     thinkButton.addEventListener("click", onThinkButton);
                 }
             }
-            thinkButton.addEventListener("click", onThinkButton);
+            
             
             motivaiton = updateMotivaiton;
         }
