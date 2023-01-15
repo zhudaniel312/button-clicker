@@ -150,12 +150,7 @@
                 thinkButtonEl.style.width =           "95px";
                 thinkButtonEl.style.height =          "27.5px";
             }
-
-            
-            var update = function() {
-                if(motivaiton >= 25) {
-                     thinkButtonEl.addEventListener("click", onThinkButton);
-                }
+                thinkButtonEl.addEventListener("click", onThinkButton);
             }
             
             
@@ -173,8 +168,11 @@
         }
         
         var onThinkButton = function() {
+            if (motivation >= 25) {
                 motivation -= 25;
                 thinkingPower += 1;
+            }
+
         }
 
         var updateText = function(text) {
@@ -183,6 +181,5 @@
         
         setInterval(update, 5);
     </script>
-    <!--JAVASCRIPT below! -->
     
 </html>
